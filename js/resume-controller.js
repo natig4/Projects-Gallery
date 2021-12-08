@@ -87,7 +87,7 @@ function renderModal(idx, project) {
 }
 
 function onOpenProject(idx) {
-    window.open('https://google.com', '_blank');
+    window.open('https://natig4.github.io/Projects-Gallery', '_blank');
 }
 
 function onSendEmail(ev) {
