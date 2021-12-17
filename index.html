@@ -2,245 +2,112 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Coding Academy</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <!-- Custom styles for this template -->
-    <link href="css/ca-gallery.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mem-Gen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 </head>
 
-<body id="page-top">
-    <div class="offcanvas-btn" onClick="openCanvas()">
-        <i class="fa fa-comment" aria-hidden="true"></i>
-    </div>
-    <aside class="offcanvas-aside">
-
-        <!-- Contact -->
-        <section id="contact">
-            <h4>Contact Me</h4>
-            <form>
-                <div class="mb-3">
-                    <label for="inputEmail" class="form-label">Your E-mail</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="name@example.com">
-                </div>
-                <div class="mb-3">
-                    <label for="inputSubject" class="form-label">Subject</label>
-                    <input type="text" class="form-control" id="inputSubject" placeholder="Type subject here">
-                </div>
-                <div class="mb-3">
-                    <label for="inputSubject" class="form-label">Message body</label>
-                    <textarea class="form-control" id="inputMessage" aria-label="With textarea" placeholder="Type message text here"></textarea>
-                </div>
-                <button type="button" class="btn btn-success btn-submit">Submit</button>
-            </form>
-        </section>
-
-    </aside>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">Meet Me</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fa fa-bars"></i>
-        </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#services">Specialities</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#me">Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-                    </li>
+<body onload="onInit()">
+    <header>
+        <div class="header-container flex align-center main-layout">
+            <div class="logo">memegen</div>
+            <nav class="main-nav">
+                <ul class="clean-list flex align-center">
+                    <li class="active" onclick="onNav(this)">Gallery</li>
+                    <li onclick="onNav(this)">Memes</li>
+                    <li onclick="onNav(this)">About</li>
                 </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Header -->
-    <header class="masthead">
-        <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">Welcome To my Portfolio</div>
-                <div class="intro-heading">It's Nice To Meet You</div>
-                <a class="btn btn-xl js-scroll-trigger" href="#services">Tell Me More</a>
-            </div>
+            </nav>
         </div>
     </header>
+    <main class="main-layout">
+        <div class="main-content flex">
+            <div class="search-panel flex align-center">
+                <form class="search-form flex" onchange="onSearch(event)">
+                    <input list="search-words " class="search" name="search" placeholder="Enter search keyword" autocomplete="off " />
+                    <datalist id="search-words"></datalist>
+                    <button class="search-btn">
+                      <img src="./img/ICONS/search-icon.png"/>
+                    </button>
+                </form>
+                <section class="control-box grid">
 
-    <!-- Services -->
-    <section id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Specialities</h2>
-                    <h3 class="section-subheading text-muted">Solving complex issues and debugging</h3>
-                </div>
+                    <div class="search-indexes flex clean-list">
+                    </div>
+                    <div class="btn-more " onclick="onToggleMore(this) ">More...</div>
             </div>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-            </span>
-                    <h4 class="service-heading">E-Commerce</h4>
-                    <p class="text-muted">Worked in an ad-tech company as a project manager & QA TL.<br> Inventing and implementing custom made solutions for more advanced retargeting.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-            </span>
-                    <h4 class="service-heading">Semiconductor industry</h4>
-                    <p class="text-muted">Creating A operation for legacy embedded systems. </p>
-                </div>
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-            </span>
-                    <h4 class="service-heading">Always discreet</h4>
-                    <p class="text-muted">100% Discration guaranteed</p>
+            <div>
+                <div class="gallery-container grid">
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Portfolio Grid -->
-    <section id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Here are some of the projects I did this past few months.</h3>
-                </div>
-            </div>
-            <div class="row projects-container">
-            </div>
-        </div>
-    </section>
+        <div class="meme-container hide">
+            <div class="canvas-container">
+                <canvas id="my-canvas "></canvas></div>
+            <div class="meme-controller grid">
+                <div class="str-line"> <input type="text" name="line" class="str-input" onclick="onCreateLine()" oninput="onSetLineTxt(this.value)" title="Change line text" placeholder="" autocomplete="off" autofocus /></div>
+                <button class="switch-line" onclick="onChangeLine()"><img src="./img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                <button class="add-line" onclick="onAddLine()"><img src="./img/ICONS/add.png" alt=""></button>
+                <button class="remove-line" onclick="onRemoveLine()"><img src="./img/ICONS/trash.png" alt=""></button>
+                <button class="increase-font" onclick="onChangeFontSize(1)"><img src="./img/ICONS/increase font - icon.png" alt=""></button>
+                <button class="decrease-font" onclick="onChangeFontSize(-1)"><img src="./img/ICONS/decrease font - icon.png" alt=""></button>
+                <button class="align-left" onclick="onChangeAlign('left')"><img src="./img/ICONS/align-to-left.png" alt=""></button>
+                <button class="align-center" onclick="onChangeAlign('center')"><img src="./img/ICONS/center-text-alignment.png" alt=""></button>
+                <button class="align-right" onclick="onChangeAlign('right')"><img src="./img/ICONS/align-to-right.png" alt=""></button>
+                <button class="font-family"><select
+                    class="select-font-family btn"
+                    onchange="onChangeFontFamily(this.value)"
+                  >
+                    <option value="impact">Impact</option>
+                    <option value="Arial">Arial</option>
+                    <option value="times">Times new roman</option>
+                    <option value="verdana">Verdana</option>
+                    <option value="cambria">Cambria</option>
+                  </select> </button>
+                <button class="stroke-color"><img src="./img/ICONS/paint-board-and-brush.png" alt=" "><input
+                    type="color"
+                    name="stroke-color"
+                    value="#000000"
+                    onchange="onChangeColor('stroke', this.value)"
+                  /></button>
+                <button class="font-color"><img src="./img/ICONS/text stroke.png" alt=" "><input
+                    type="color"
+                    name="font-color"
+                    value="#ffffff"
+                    onchange="onChangeColor('font', this.value)"
+                  /></button>
+                <a class="download" href="#" onclick="onDownloadMeme(this) " download="meme.jpg">Download</a>
+                <button class="share ">Share</button>
+                <button class="save" onclick="onSaveMeme()">Save</button>
 
-
-    <!-- Me -->
-    <section class="bg-light" id="me" style="padding: 0px;">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./img/team/nati.jpg" alt="">
-                    <h4>Nati Gurevich</h4>
-                    <p class="text-muted">Full Stack Developer</p>
-                    <ul class="list-inline social-buttons">
-                        <li class="list-inline-item">
-                            <a href="https://www.instagram.com/efraim.johnson/" target="_ blank ">
-                                <i class="fa fa-instagram "></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item ">
-                            <a href="https://www.linkedin.com/in/nati-gurevich-36868711b/ " target="_blank ">
-                                <i class="fa fa-facebook "></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item ">
-                            <a href="https://www.linkedin.com/in/nati-gurevich-36868711b/ " target="_blank ">
-                                <i class="fa fa-linkedin "></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-8 flex-align-center ">
-                <p class="large text-muted about-description ">I've been in the Hi-Tech industry for the last 7 years, working as a QA and Project manager team leader. <br>During the last few months I've been studying becoming a developer and it is going pretty well. <br> On my spare time (which is
-                    not a lot nowdays) I like cooking, playing cards, spending time with family and friends and enjoying what life has to offer.
-                </p>
             </div>
         </div>
-    </section>
-
-
-    <!-- Footer -->
+        <div class="memes-gallery main-layout flex"></div>
+    </main>
     <footer>
-        <div class="container ">
-            <div class="row ">
-                <div class="col-md-4 flex-align-center ">
-                    <a href="http://coding-academy.org " target="_blank ">
-                        <img src="./img/ca-logo.png " alt=" ">
-                    </a>
-                </div>
-                <div class="col-md-4 flex-align-center ">
-                    <ul class="list-inline social-buttons flex-align-center ">
-                        <li class="list-inline-item ">
-                            <a href="# ">
-                                <i class="fa fa-twitter "></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item flex-align-center ">
-                            <a href="# ">
-                                <i class="fa fa-facebook "></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item ">
-                            <a href="# ">
-                                <i class="fa fa-linkedin "></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4 flex-align-center ">
-                    <ul class="list-inline quicklinks ">
-                        <li class="list-inline-item ">
-                            <a href="# ">More Me</a>
-                        </li>
-                        <li class="list-inline-item ">
-                            <a href="# ">Even More</a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="footer-container flex align-center main-layout">
+            <div class="logo ">memegen</div>
+            <div class="copy-rights ">© 2021 All Rights Reserved - Nati Gurevich </div>
+            <div class="social-nav flex ">
+                <a href="https://www.facebook.com/nati.gurevich.3/ " target="_blank " class="fa fa-facebook "></a>
+                <a href="https://www.instagram.com/efraim.johnson/ " target="_blank " class="fa fa-instagram "></a>
+                <a href="https://www.linkedin.com/in/nati-gurevich-36868711b/ " target="_blank " class="fa fa-linkedin "></a>
             </div>
         </div>
     </footer>
+    <script src="js/services/util.service.js "></script>
+    <script src="js/services/storage.service.js "></script>
+    <script src="./js/services/page-service.js "></script>
+    <script src="./js/services/meme-service.js "></script>
+    <script src="./js/page-controller.js "></script>
+    <script src="./js/meme-controller.js "></script>
+    <script src="./js/editor-controller.js "></script>
 
-    <!-- Portfolio Modals -->
-
-    <!-- Modal 1 -->
-
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="./vendor/jquery/jquery.min.js "></script>
-    <script src="./vendor/popper/popper.min.js "></script>
-    <script src="./vendor/bootstrap/js/bootstrap.min.js "></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="./vendor/jquery-easing/jquery.easing.min.js "></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="./js/ca-gallery.js "></script>
-    <script src="./js/offCanvas.js "></script>
-    <script src="./js/main.js "></script>
-    <script src="./js/resume-service.js"></script>
-    <script src="./js/resume-controller.js"></script>
 
 
 </body>
